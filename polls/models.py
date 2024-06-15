@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+import datetime
 
 # The following code defines the database schema for the polls application.
 # It creates the following tables:
@@ -13,6 +15,10 @@ class Question(models.Model):
     # The __str__() method is the default human-readable representation of the object.
     def __str__(self):
         return self.question_text
+
+    # The was_published_recently() method returns True if the question was published within the last day.
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
 # - Choice
