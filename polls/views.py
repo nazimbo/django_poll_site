@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Question
 
@@ -13,7 +14,8 @@ def index(request):
 
 # The detail() view is a placeholder for the detail view for a question.
 def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, "polls/detail.html", {"question": question})
 
 
 # The results() view is a placeholder for the results view for a question.
