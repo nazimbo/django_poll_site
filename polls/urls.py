@@ -2,6 +2,9 @@ from django.urls import path
 
 from . import views
 
+# The app_name attribute is used to help Django distinguish between different apps that have the same URL patterns.
+app_name = "polls"
+
 # The following code maps URL patterns to views.
 urlpatterns = [
     # ex: /polls/
